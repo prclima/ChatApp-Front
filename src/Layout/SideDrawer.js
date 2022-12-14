@@ -1,0 +1,151 @@
+import {
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/menu";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+} from "@chakra-ui/modal";
+import { Tooltip, Text, Input, Spinner } from "@chakra-ui/react";
+import {
+  Button,
+  ButtonGroup,
+  Box,
+  Avatar,
+  AvatarBadge,
+  AvatarGroup,
+} from "@chakra-ui/react";
+
+import { useEffect, useState } from "react";
+import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { ChatState } from "../Context/ChatProvider";
+import Perfil from "../Layout/Perfil";
+import { useNavigate } from "react-router-dom";
+import { useDisclosure } from "@chakra-ui/hooks";
+import axios from "axios";
+import UserListItem from "../Components/Autenticacao/userListItem.js";
+import { api } from "../API/API";
+
+
+export default function SideDrawer() {
+  const [search, setSearch] = useState("");
+  const [usuarios, setUsuarios] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
+  const [loadingChat, setLoadingChat] = useState(true);
+  
+
+  // contexto
+  const { user, setUser, selectedChat, setSelectedChat, chats, setChats } =
+    ChatState();
+
+
+
+  const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  async function HandleSearch() {
+    try {
+      const { data } = await api.get(
+        `api/user?search=${search}`
+      );
+      setSearchResult(data);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async function acessChat(userId) {
+    
+
+    try {
+      const { data } = await api.post(
+        `api/chat`, {userId}
+      );
+      
+      if(!chats.find((item)=> item._id === data._id)) setChats([data, ...chats])
+
+      
+      setSelectedChat(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+    <>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        bg="white"
+        p="5px 10px 5px 10px"
+        borderWidth="5px"
+      >
+        <Tooltip label="Procurar usuário" hasArrow placement="bottom-end">
+          <Button variant="ghost" onClick={onOpen}>
+            <Text p="4px">Procurar Usuários</Text>
+          </Button>
+        </Tooltip>
+
+        <Text fontSize="2x1" fontFamily="Work sans">
+          Chat App
+        </Text>
+        <div>
+          <Menu>
+            <MenuButton p={1}>
+              <BellIcon boxSize={7} p={1} />
+            </MenuButton>
+          </Menu>
+          <Menu>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+              <Avatar size="sm" cursor="pointer">
+              <AvatarBadge boxSize='1.25em' bg='green.500' />
+            </Avatar>
+            </MenuButton>
+            <MenuList>
+              <Perfil user={user}>
+                <MenuItem> Perfil </MenuItem>
+              </Perfil>
+              <MenuDivider />
+              <MenuItem> Sair </MenuItem>
+            </MenuList>
+          </Menu>
+        </div>
+      </Box>
+      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader borderBottomWidth="1px">Buscar Usuário</DrawerHeader>
+          <DrawerBody>
+            <Box display="flex" pb={2}>
+              <Input
+                placeholder="Procure o Usuário pelo nome ou e-mail"
+                mr={2}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              />
+              <Button onClick={HandleSearch}>Buscar</Button>
+            </Box>
+            {searchResult?.map((item) => {
+              return (
+                <UserListItem
+                  key={item._id}
+                  item={item}
+                  HandleFunction={() => acessChat(item._id)}
+                />
+              );
+            })}
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+}
