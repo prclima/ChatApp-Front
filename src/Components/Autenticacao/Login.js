@@ -24,7 +24,7 @@ export function Login() {
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const data = await api.post("api/user/login", {
+      const data = await api.post(`api/user/login`, {
         email,
         password,
       });
