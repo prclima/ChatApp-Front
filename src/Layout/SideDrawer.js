@@ -22,6 +22,8 @@ import {
   AvatarGroup,
 } from "@chakra-ui/react";
 
+import { ChatIcon } from "@chakra-ui/icons";
+
 import { useEffect, useState } from "react";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { ChatState } from "../Context/ChatProvider";
@@ -31,6 +33,7 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import axios from "axios";
 import UserListItem from "../Components/Autenticacao/userListItem.js";
 import { api } from "../API/API";
+import { useToast } from '@chakra-ui/react'
 
 
 export default function SideDrawer() {
@@ -38,7 +41,7 @@ export default function SideDrawer() {
   const [usuarios, setUsuarios] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [loadingChat, setLoadingChat] = useState(true);
-  
+  const toast = useToast()
 
   // contexto
   const { user, setUser, selectedChat, setSelectedChat, chats, setChats } =
@@ -67,11 +70,14 @@ export default function SideDrawer() {
       const { data } = await api.post(
         `api/chat`, {userId}
       );
-      
-      if(!chats.find((item)=> item._id === data._id)) setChats([data, ...chats])
+      console.log(data)
+      if(!chats.find((item)=> item._id === data._id)) setChats([data, ...chats],
+        
+        )
 
       
       setSelectedChat(data);
+      onClose();
     } catch (err) {
       console.log(err);
     }
@@ -93,7 +99,8 @@ export default function SideDrawer() {
           </Button>
         </Tooltip>
 
-        <Text fontSize="2x1" fontFamily="Work sans">
+        <Text fontSize="2x1" fontFamily="Work sans" >
+          <ChatIcon mr={2}/>
           Chat App
         </Text>
         <div>
@@ -113,7 +120,17 @@ export default function SideDrawer() {
                 <MenuItem> Perfil </MenuItem>
               </Perfil>
               <MenuDivider />
-              <MenuItem> Sair </MenuItem>
+              <MenuItem onClick={()=>{
+                localStorage.setItem("userInfo", JSON.stringify(null))
+                navigate("/") 
+                toast({
+                 title: "Tchau, até mais...",
+                  status: 'info',
+                  duration: 5000,
+                  isClosable: true,
+                  position: "top-right",
+                    });
+              }}> Sair </MenuItem>
             </MenuList>
           </Menu>
         </div>
@@ -134,12 +151,14 @@ export default function SideDrawer() {
               />
               <Button onClick={HandleSearch}>Buscar</Button>
             </Box>
-            {searchResult?.map((item) => {
+            {searchResult.map((item) => {
+              
               return (
                 <UserListItem
                   key={item._id}
                   item={item}
                   HandleFunction={() => acessChat(item._id)}
+           
                 />
               );
             })}

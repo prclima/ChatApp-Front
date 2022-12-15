@@ -42,6 +42,7 @@ export default function MyChats() {
         alignItems="center"
       >
         Minhas Conversas
+    
       </Box>
       <Box
         display="flex"
@@ -58,6 +59,9 @@ export default function MyChats() {
             <Box
               onClick={() => setSelectedChat(chat)}
               bg="#E8E8E8"
+              display="flex"
+              ustifyContent="space-between"
+              alignItems="center"
               _hover={{
                 background: "#FF8261",
                 color: "black",
@@ -70,6 +74,7 @@ export default function MyChats() {
               key={chat._id}
             >
               <Text>{getSender(lodUser, chat.users)}</Text>
+              
             </Box>
           );
         })}

@@ -14,15 +14,8 @@ function SingleChat() {
   const [newMessage, setNewMessage] = useState([]);
   const [socketConnected, setSocketConnected] = useState(false)
 
-  const { user, selectedChat, setSelectedChat, setChats } = ChatState();
+  const { user, selectedChat, setSelectedChat, setChats, notification, setNotification} = ChatState();
 
-  // function selectHandle(chatToAdd){
-  //   if(selectedChat.includes(chatToAdd)){
-  //     setSelectedChat(chatToAdd)
-  //   }
-  // }
-
-  
   
   async function fetchMessages() {
     try {
@@ -46,8 +39,8 @@ function SingleChat() {
   useEffect(()=>{
     socket.on("message recieved", (newMessageRecieved) =>{
       if (! selectedChatComp || selectedChatComp._id !== newMessageRecieved.chat._id){
-  
-        // notificacao
+        
+      
       } else {
         setMessages([...messages, newMessageRecieved])
       }
@@ -74,7 +67,7 @@ function SingleChat() {
           chatId: selectedChat._id,
         });
         setMessages([...messages, data]);
-        console.log(data)
+       
         //socket.io - send
         socket.emit('new message', data);
       } catch (err) {
@@ -89,6 +82,11 @@ function SingleChat() {
 
   return (
     <>
+     <Text p="4px" fontSize='1.55rem' color='black'>
+      {(selectedChat && user) 
+      ? (user.data._id === selectedChat.users[0]._id ) ? (selectedChat.users[1].name) : selectedChat.users[0].name
+       : ("Selecione uma Conversa...")}
+     </Text>
       <Box
         display="flex"
         flexDir="column"
@@ -104,7 +102,6 @@ function SingleChat() {
                 <Scroll messages={messages} />
               </div>
         <FormControl onKeyDown={sendMessage}>
-     
           <Input
             variant="filled"
             _placeholder="Digite..."
