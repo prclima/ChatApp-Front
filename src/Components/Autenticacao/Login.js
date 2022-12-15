@@ -13,7 +13,6 @@ import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { api } from "../../API/API";
 
 export function Login() {
   const navigate = useNavigate();
@@ -24,8 +23,8 @@ export function Login() {
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const data = await api.post(
-        `https://quiet-star-3608.fly.dev/user/login`,
+      const data = await axios.post(
+        "https://quiet-star-3608.fly.dev/user/login",
         {
           email,
           password,
