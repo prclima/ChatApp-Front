@@ -5,7 +5,7 @@ import axios from "axios";
 //     production: "LINK DA API DEPLOYADA AQUI SEM BARRA NO FINAL",
 //   };
 
-const api = axios.create({ baseURL: "66.241.125.146" });
+const api = axios.create({ baseURL: "quiet-star-3608.fly.dev" });
 
 api.interceptors.request.use((config) => {
   const loggedInUserJSON = localStorage.getItem("userInfo");

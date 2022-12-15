@@ -24,7 +24,7 @@ export function Login() {
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const data = await axios.post("66.241.125.146/api/user/login", {
+      const data = await axios.post("quiet-star-3608.fly.dev/api/user/login", {
         email,
         password,
       });
