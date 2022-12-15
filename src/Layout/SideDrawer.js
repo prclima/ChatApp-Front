@@ -95,7 +95,7 @@ export default function SideDrawer() {
               <BellIcon boxSize={7} p={1} />
             </MenuButton>
             <MenuList pl={2}>
-              {!notification.length && "Sem novas mensagens"}
+              {/* {!notification.length && "Sem novas mensagens"} */}
               {notification.map((item) => (
                 <MenuItem>
                   {`Nova mensagem de: ${getSender(user, item.chat.users)}`}
