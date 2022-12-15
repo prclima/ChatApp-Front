@@ -50,7 +50,7 @@ export function Login() {
   return (
     <VStack spacing="5px">
       <FormControl id="email" isRequired>
-        <FormLabel>E-mail</FormLabel>
+        <FormLabel>blablablablalbalbla</FormLabel>
         <Input
         name="email"
         type={"email"}
