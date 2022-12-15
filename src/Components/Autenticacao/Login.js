@@ -12,30 +12,25 @@ import {
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { ChatState } from "../../Context/ChatProvider";
 
-
-
 export function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
 
-
-
-
-
-
-
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const data = await axios.post("2a09:8280:1::6:b5fe/api/user/login", {email, password});
-      
-      localStorage.setItem("userInfo", JSON.stringify(data))
-      navigate("/chats") 
+      const data = await axios.post("quiet-star-3608.fly.dev", {
+        email,
+        password,
+      });
+
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      navigate("/chats");
     } catch (err) {
       toast({
         title: "Ops... usuário/senha não encotrados",
@@ -44,16 +39,16 @@ export function Login() {
         isClosable: true,
         position: "top",
       });
-      console.log(err); 
+      console.log(err);
     }
-  } 
+  }
   return (
     <VStack spacing="5px">
       <FormControl id="email" isRequired>
         <FormLabel>teste nome</FormLabel>
         <Input
-        name="email"
-        type={"email"}
+          name="email"
+          type={"email"}
           placeholder="Informe seu e-mail"
           onChange={(e) => {
             setEmail(e.target.value);
@@ -65,7 +60,7 @@ export function Login() {
       <FormControl id="password" isRequired>
         <FormLabel>Senha</FormLabel>
         <Input
-        name="password"
+          name="password"
           type={"password"}
           placeholder="Informe sua senha"
           onChange={(e) => {

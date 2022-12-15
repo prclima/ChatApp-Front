@@ -12,10 +12,10 @@ import {
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export function Signup() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const toast = useToast();
   const [form, setForm] = useState({
@@ -31,8 +31,8 @@ export function Signup() {
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const dados = await axios.post("2a09:8280:1::6:b5fe/api/user/", form);
-     
+      const dados = await axios.post("quiet-star-3608.fly.dev/api/user/", form);
+
       toast({
         title: "Cadastro Realizado!",
         status: "success",
@@ -40,9 +40,9 @@ export function Signup() {
         isClosable: true,
         position: "top",
       });
-      localStorage.setItem('userInfo', JSON.stringify(dados));
-      console.log(dados)
-      navigate("/chats") 
+      localStorage.setItem("userInfo", JSON.stringify(dados));
+      console.log(dados);
+      navigate("/chats");
     } catch (err) {
       toast({
         title: "Todos os campos precisam ser preenchidos!",
@@ -51,7 +51,7 @@ export function Signup() {
         isClosable: true,
         position: "top",
       });
-      console.log(err); 
+      console.log(err);
     }
   }
 
