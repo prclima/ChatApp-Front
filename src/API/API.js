@@ -5,7 +5,7 @@ import axios from "axios";
 //     production: "LINK DA API DEPLOYADA AQUI SEM BARRA NO FINAL",
 //   };
 
-const api = axios.create({ baseURL: "2a09:8280:1::6:b5fe" });
+const api = axios.create({ baseURL: "66.241.125.146" });
 
 api.interceptors.request.use((config) => {
   const loggedInUserJSON = localStorage.getItem("userInfo");
