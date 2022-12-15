@@ -45,7 +45,7 @@ export function Signup() {
       navigate("/");
     } catch (err) {
       toast({
-        title: "Todos os campos precisam ser preenchidos",
+        title: "Todos os campos precisam ser preenchidos!!!",
         status: "error",
         duration: 5000,
         isClosable: true,
