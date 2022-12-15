@@ -32,7 +32,7 @@ export function Login() {
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const data = await axios.post("http://localhost:8081/api/user/login", {email, password});
+      const data = await axios.post("2a09:8280:1::6:b5fe/api/user/login", {email, password});
       
       localStorage.setItem("userInfo", JSON.stringify(data))
       navigate("/chats") 
