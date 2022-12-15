@@ -54,7 +54,7 @@ export default function MyChats() {
         borderRadius="lg"
         overflowY="hidden"
       >
-        {chats?.map((chat) => {
+        {chats.map((chat) => {
           return (
             <Box
               onClick={() => setSelectedChat(chat)}
