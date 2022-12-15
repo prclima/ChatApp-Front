@@ -24,10 +24,13 @@ export function Login() {
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const data = await api.post(`api/user/login`, {
-        email,
-        password,
-      });
+      const data = await api.post(
+        `https://quiet-star-3608.fly.dev/user/login`,
+        {
+          email,
+          password,
+        }
+      );
 
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate("/chats");

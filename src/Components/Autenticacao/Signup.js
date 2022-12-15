@@ -37,7 +37,7 @@ export function Signup() {
       );
 
       toast({
-        title: "Cadastro Realizado!",
+        title: "Cadastro Realizado! Clique na aba Login e comece a conversar!",
         status: "success",
         duration: 5000,
         isClosable: true,
