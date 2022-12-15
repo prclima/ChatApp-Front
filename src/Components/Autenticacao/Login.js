@@ -45,7 +45,7 @@ export function Login() {
   return (
     <VStack spacing="5px">
       <FormControl id="email" isRequired>
-        <FormLabel>teste nome</FormLabel>
+        <FormLabel>teste nsssssssssssome</FormLabel>
         <Input
           name="email"
           type={"email"}
