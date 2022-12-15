@@ -42,7 +42,7 @@ export function Signup() {
       });
       localStorage.setItem("userInfo", JSON.stringify(dados));
       console.log(dados);
-      navigate("/chats");
+      navigate("/");
     } catch (err) {
       toast({
         title: "Todos os campos precisam ser preenchidos!",
