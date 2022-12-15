@@ -14,19 +14,17 @@ import {
 } from "@chakra-ui/modal";
 import { Tooltip, Text, Input } from "@chakra-ui/react";
 import { Button, Box, Avatar, AvatarBadge } from "@chakra-ui/react";
-
 import { ChatIcon } from "@chakra-ui/icons";
-
 import { useState } from "react";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { ChatState } from "../Context/ChatProvider";
 import Perfil from "../Layout/Perfil";
 import { useNavigate } from "react-router-dom";
 import { useDisclosure } from "@chakra-ui/hooks";
-
 import UserListItem from "../Components/Autenticacao/userListItem.js";
 import { api } from "../API/API";
 import { useToast } from "@chakra-ui/react";
+import { getSender } from "../NameChat";
 
 export default function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -36,7 +34,14 @@ export default function SideDrawer() {
   const toast = useToast();
 
   // contexto
-  const { user, setSelectedChat, chats, setChats } = ChatState();
+  const {
+    user,
+    setSelectedChat,
+    chats,
+    setChats,
+    notification,
+    setNotification,
+  } = ChatState();
 
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -89,6 +94,14 @@ export default function SideDrawer() {
             <MenuButton p={1}>
               <BellIcon boxSize={7} p={1} />
             </MenuButton>
+            <MenuList pl={2}>
+              {!notification.length && "Sem novas mensagens"}
+              {notification.map((not) => (
+                <MenuItem>
+                  {`Nova mensagem de: ${getSender(user, not.chat.users)}`}
+                </MenuItem>
+              ))}
+            </MenuList>
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
