@@ -99,6 +99,7 @@ export default function SideDrawer() {
               {notification.map((not) => (
                 <MenuItem>
                   {`Nova mensagem de: ${getSender(user, not.data.chat.users)}`}
+                  {console.log(not)}
                 </MenuItem>
               ))}
             </MenuList>
