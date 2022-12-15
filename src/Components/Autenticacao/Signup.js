@@ -31,7 +31,7 @@ export function Signup() {
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const dados = await axios.post("quiet-star-3608.fly.dev/api/user/", form);
+      const dados = await axios.post("2a09:8280:1::6:b5fe/api/user/", form);
 
       toast({
         title: "Cadastro Realizado!",
