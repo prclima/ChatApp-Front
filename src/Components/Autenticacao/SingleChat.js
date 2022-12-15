@@ -1,6 +1,6 @@
 import { Box, FormControl, Input, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { Form } from "react-router-dom";
+
 import { ChatState } from "../../Context/ChatProvider";
 import { api } from "../../API/API.js";
 import Scroll from "../Scroll";

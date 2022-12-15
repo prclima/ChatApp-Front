@@ -2,9 +2,8 @@ import { Box, Container, Text } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { Login } from "../Components/Autenticacao/Login";
 import { Signup } from "../Components/Autenticacao/Signup";
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChatState } from "../Context/ChatProvider";
 
 export function Homepage() {
   const navigate = useNavigate();

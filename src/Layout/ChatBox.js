@@ -1,9 +1,9 @@
 import { ChatState } from "../Context/ChatProvider";
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import SingleChat from "../Components/Autenticacao/SingleChat.js";
 
 export default function ChatBox() {
-  const { setSelectedChat, selectedChat, user } = ChatState();
+  const { selectedChat } = ChatState();
 
   return (
     <Box
@@ -16,10 +16,7 @@ export default function ChatBox() {
       borderRadius="lg"
       borderWidth="1px"
     >
-     
-      <Text>
-     
-      </Text>
+      <Text></Text>
       <SingleChat />
     </Box>
   );

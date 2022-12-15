@@ -1,11 +1,11 @@
 import { ChatState } from "../Context/ChatProvider.js";
 import { useState, useEffect } from "react";
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { api } from "../API/API.js";
 import { getSender } from "../../src/NameChat.js";
 
 export default function MyChats() {
-  const { selectedChat, setSelectedChat, chats, user, setChats } = ChatState();
+  const { setSelectedChat, chats, setChats } = ChatState();
   const [lodUser, setLogUser] = useState();
 
   async function fetchChats(req, res) {
