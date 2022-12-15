@@ -3,21 +3,20 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { Login } from "../Components/Autenticacao/Login";
 import { Signup } from "../Components/Autenticacao/Signup";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { ChatState } from "../Context/ChatProvider";
 
 export function Homepage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-     const user = JSON.parse(localStorage.getItem("userInfo"))
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
     if (user) {
-      navigate("/chats")
+      navigate("/chats");
     }
-},[])
+  }, []);
 
   return (
-   
     <Container maxW="xl" centerContent>
       <Box
         d="flex"
@@ -35,7 +34,7 @@ export function Homepage() {
         <Tabs variant="enclosed">
           <TabList>
             <Tab width="50%">Login</Tab>
-            <Tab width="50%">Sing Up</Tab>
+            <Tab width="50%">Sign Up</Tab>
           </TabList>
 
           <TabPanels>

@@ -12,6 +12,7 @@ export default function MyChats() {
     try {
       const { data } = await api.get(`api/chat`);
       setChats(data);
+      setLogUser(JSON.parse(localStorage.getItem("userInfo")));
     } catch (err) {
       console.log(err);
     }
@@ -42,7 +43,6 @@ export default function MyChats() {
         alignItems="center"
       >
         Minhas Conversas
-    
       </Box>
       <Box
         display="flex"
@@ -74,7 +74,6 @@ export default function MyChats() {
               key={chat._id}
             >
               <Text>{getSender(lodUser, chat.users)}</Text>
-              
             </Box>
           );
         })}
