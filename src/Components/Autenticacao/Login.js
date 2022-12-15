@@ -20,7 +20,7 @@ export function Login() {
     e.preventDefault();
     try {
       const data = await axios.post(
-        "https://quiet-star-3608.fly.dev/user/login",
+        "https://quiet-star-3608.fly.dev/api/user/login",
         {
           email,
           password,
