@@ -96,10 +96,10 @@ export default function SideDrawer() {
             </MenuButton>
             <MenuList pl={2}>
               {!notification.length && "Sem novas mensagens"}
-              {notification.map((not) => (
+              {notification.map((item) => (
                 <MenuItem>
-                  {`Nova mensagem de: ${getSender(user, not.data.chat.users)}`}
-                  {console.log(not)}
+                  {`Nova mensagem de: ${getSender(user, item.chat.users)}`}
+                  {console.log(notification)}
                 </MenuItem>
               ))}
             </MenuList>
