@@ -27,7 +27,10 @@ export function Signup() {
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const dados = await axios.post("http://localhost:8080/api/user", form);
+      const dados = await axios.post(
+        "https://quiet-star-3608.fly.dev/api/user",
+        form
+      );
 
       toast({
         title: "Cadastro Realizado! Clique na aba Login e comece a conversar!",
