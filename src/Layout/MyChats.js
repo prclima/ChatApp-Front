@@ -20,7 +20,7 @@ export default function MyChats() {
   useEffect(() => {
     setLogUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, []);
+  }, [chats]);
 
   return (
     <Box

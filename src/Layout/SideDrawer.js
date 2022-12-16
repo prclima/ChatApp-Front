@@ -50,7 +50,6 @@ export default function SideDrawer() {
     try {
       const { data } = await api.get(`api/user?search=${search}`);
       setSearchResult(data);
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -58,7 +57,7 @@ export default function SideDrawer() {
   async function acessChat(userId) {
     try {
       const { data } = await api.post(`api/chat`, { userId });
-      console.log(data);
+
       if (!chats.find((item) => item._id === data._id))
         setChats([data, ...chats]);
 
@@ -95,11 +94,16 @@ export default function SideDrawer() {
               <BellIcon boxSize={7} p={1} />
             </MenuButton>
             <MenuList pl={2}>
-              {/* {!notification.length && "Sem novas mensagens"} */}
+              {!notification.length && "Sem novas mensagens"}
+
               {notification.map((item) => (
-                <MenuItem>
-                  {`Nova mensagem de: ${getSender(user, item.chat.users)}`}
-                  {console.log(notification)}
+                <MenuItem
+                  onClick={() => {
+                    setSelectedChat(item.chat);
+                    setNotification([null]);
+                  }}
+                >
+                  {`Nova mensagem de  : ${getSender(user, item.chat.users)}`}
                 </MenuItem>
               ))}
             </MenuList>

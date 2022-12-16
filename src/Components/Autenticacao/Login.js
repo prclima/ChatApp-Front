@@ -15,17 +15,15 @@ export function Login() {
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
-
+  // http://localhost:8080
+  // "https://quiet-star-3608.fly.dev/api/user/login",
   async function HandleSubmit(e) {
     e.preventDefault();
     try {
-      const data = await axios.post(
-        "https://quiet-star-3608.fly.dev/api/user/login",
-        {
-          email,
-          password,
-        }
-      );
+      const data = await axios.post("http://localhost:8080/api/user/login", {
+        email,
+        password,
+      });
 
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate("/chats");

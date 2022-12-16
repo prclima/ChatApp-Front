@@ -47,12 +47,8 @@ function SingleChat() {
         !selectedChatComp ||
         selectedChatComp._id !== newMessageRecieved.chat._id
       ) {
-        if (!notification.includes(newMessageRecieved)) {
-          setNotification([newMessageRecieved, ...notification]);
-        }
       } else {
         setMessages([...messages, newMessageRecieved]);
-        // setNotification([newMessageRecieved, ...notification]);
       }
     });
   });
