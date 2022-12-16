@@ -14,7 +14,7 @@ export function Chatpage() {
 
   return (
     <div style={{ width: "100%" }}>
-      {user && <SideDrawer />}
+      <SideDrawer />
 
       <Box
         display="flex"
@@ -23,8 +23,10 @@ export function Chatpage() {
         w="100%"
         h="91.5vh"
       >
-        {user && <MyChats />}
-        {user && <ChatBox />}
+        {/* {user && <MyChats />}
+        {user && <ChatBox />} */}
+        <MyChats />
+        <ChatBox />
       </Box>
     </div>
   );
