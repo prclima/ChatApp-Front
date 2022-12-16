@@ -55,6 +55,7 @@ export default function MyChats() {
         overflowY="hidden"
       >
         {chats.map((chat) => {
+          
           return (
             <Box
               onClick={() => setSelectedChat(chat)}

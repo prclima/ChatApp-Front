@@ -10,9 +10,7 @@ export function Chatpage() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
-    if (user) {
-    }
-  }, []);
+  }, [user]);
 
   return (
     <div style={{ width: "100%" }}>

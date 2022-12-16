@@ -1,5 +1,3 @@
-
-
 export const getSender = (logUser, users) => {
      
       if (logUser.data._id === users[0]._id) {
