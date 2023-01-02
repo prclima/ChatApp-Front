@@ -4,7 +4,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { api } from "../API/API.js";
 import { getSender } from "../../src/NameChat.js";
 
-export default function MyChats() {
+export default function MyChats({ fetchAgain }) {
   const { setSelectedChat, chats, setChats } = ChatState();
   const [lodUser, setLogUser] = useState();
 
@@ -20,7 +20,7 @@ export default function MyChats() {
   useEffect(() => {
     setLogUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, [chats]);
+  }, [fetchAgain]);
 
   return (
     <Box
@@ -37,6 +37,7 @@ export default function MyChats() {
         pb={3}
         px={3}
         fontSize={{ base: "28px", md: "30px" }}
+        fontFamily="Work sans"
         display="flex"
         w="100%"
         justifyContent="space-between"
@@ -55,10 +56,10 @@ export default function MyChats() {
         overflowY="hidden"
       >
         {chats.map((chat) => {
-          
           return (
             <Box
               onClick={() => setSelectedChat(chat)}
+              cursor="pointer"
               bg="#E8E8E8"
               display="flex"
               ustifyContent="space-between"

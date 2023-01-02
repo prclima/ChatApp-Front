@@ -84,7 +84,7 @@ export default function SideDrawer() {
           </Button>
         </Tooltip>
 
-        <Text fontSize="2x1" fontFamily="Work sans">
+        <Text fontSize="3x1" fontFamily="Work sans">
           <ChatIcon mr={2} />
           Chat App
         </Text>

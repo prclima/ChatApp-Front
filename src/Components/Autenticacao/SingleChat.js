@@ -9,7 +9,7 @@ import { io } from "socket.io-client";
 const ENDPOINT = "quiet-star-3608.fly.dev";
 let socket, selectedChatComp;
 
-function SingleChat() {
+function SingleChat({ fetchAgain, setFetchAgain }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState([]);
   const [socketConnected, setSocketConnected] = useState(false);
