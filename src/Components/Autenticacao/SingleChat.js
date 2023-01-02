@@ -102,7 +102,6 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
                 : selectedChat.users[0].name
               : "Selecione uma Conversa"}
             <IconButton
-              //  d={{ base: "flex", md: "none" }}
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
             />
@@ -135,7 +134,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
       ) : (
         <Box d="flex" alignItems="center" justifyContent="center" h="100%">
           <Text fontSize="3xl" pb={3} fontFamily="Work sans">
-            Click on a user to start chatting
+            Selecione uma conversa
           </Text>
         </Box>
       )}
