@@ -74,13 +74,14 @@ export default function SideDrawer() {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
+        w="100%"
         bg="white"
-        // p="5px 10px 5px 10px"
-        borderWidth="5px"
+        p="5px 10px 5px 10px"
+        // borderWidth="5px"
       >
         <Tooltip label="Procurar usuário" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
-            <Text d={{ base: "none", md: "flex" }} p="4px">
+            <Text d={{ base: "none", md: "flex" }} p="2px">
               Procurar Usuários
             </Text>
           </Button>
@@ -91,25 +92,7 @@ export default function SideDrawer() {
           Chat App
         </Text>
         <div>
-          <Menu>
-            <MenuButton p={1}>
-              <BellIcon boxSize={7} p={1} />
-            </MenuButton>
-            <MenuList pl={2}>
-              {!notification.length && "Sem novas mensagens"}
-
-              {notification.map((item) => (
-                <MenuItem
-                  onClick={() => {
-                    setSelectedChat(item.chat);
-                    setNotification([null]);
-                  }}
-                >
-                  {`Nova mensagem de  : ${getSender(user, item.chat.users)}`}
-                </MenuItem>
-              ))}
-            </MenuList>
-          </Menu>
+          <Menu></Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
               <Avatar size="sm" cursor="pointer">
