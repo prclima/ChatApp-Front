@@ -9,7 +9,7 @@ function Scroll({ messages }) {
         <div style={{ display: "flex" }}>
           <span
             style={{
-              fontSize: "0.8rem",
+              fontSize: "1rem",
               borderRadius: "10px",
               backgroundColor: `${
                 m.sender._id === user.data._id ? "#B9F5D0" : "#BEE3F8"
