@@ -19,8 +19,6 @@ export default function ChatBox({ fetchAgain, setFetchAgain }) {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text></Text>
-
         <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
       </Box>
     </>

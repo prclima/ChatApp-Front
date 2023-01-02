@@ -89,7 +89,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
           <Text
             display="flex"
             p="4px"
-            fontSize="1.55rem"
+            fontSize={{ base: "28px", md: "30px" }}
             color="black"
             fontFamily="Work sans"
             justifyContent={{ base: "space-between" }}
@@ -124,7 +124,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
             <FormControl onKeyDown={sendMessage}>
               <Input
                 variant="filled"
-                _placeholder="Digite..."
+                placeholder="Digite algo..."
                 onChange={typingHandler}
                 value={newMessage}
               />
@@ -142,40 +142,3 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   );
 }
 export default SingleChat;
-
-// <>
-
-// <Text p="4px" fontSize="1.55rem" color="black" fontFamily="Work sans">
-
-//   {selectedChat && user
-//     ? user.data._id === selectedChat.users[0]._id
-//       ? selectedChat.users[1].name
-//       : selectedChat.users[0].name
-//     : "Selecione uma Conversa"}
-// </Text>
-
-// <Box
-//   display="flex"
-//   flexDir="column"
-//   justifyContent="flex-end"
-//   p={3}
-//   bg="#E8E8E8"
-//   w="100%"
-//   h="100%"
-//   borderRadius="lg"
-//   overflowY="hidden"
-// >
-//   <div className="messages">
-//     <Scroll messages={messages} />
-//   </div>
-//   <FormControl onKeyDown={sendMessage}>
-//     <Input
-//       variant="filled"
-//       _placeholder="Digite..."
-//       onChange={typingHandler}
-//       value={newMessage}
-//     />
-//   </FormControl>
-// </Box>
-// </>
-// );
