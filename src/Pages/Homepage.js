@@ -27,7 +27,10 @@ export function Homepage() {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text fontSize="4x1">Chat App</Text>
+        <Text md={50} fontSize="4xl" align="center">
+          {" "}
+          Chat App
+        </Text>
       </Box>
       <Box bg="white" w="100%" borderRadius="lg" borderWidth="1px">
         <Tabs variant="enclosed">
