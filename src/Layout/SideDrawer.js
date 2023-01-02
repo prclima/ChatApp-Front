@@ -75,16 +75,18 @@ export default function SideDrawer() {
         justifyContent="space-between"
         alignItems="center"
         bg="white"
-        p="5px 10px 5px 10px"
+        // p="5px 10px 5px 10px"
         borderWidth="5px"
       >
         <Tooltip label="Procurar usuário" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
-            <Text p="4px">Procurar Usuários</Text>
+            <Text d={{ base: "none", md: "flex" }} p="4px">
+              Procurar Usuários
+            </Text>
           </Button>
         </Tooltip>
 
-        <Text fontSize="3x1" fontFamily="Work sans">
+        <Text fontSize="2x1" fontFamily="Work sans">
           <ChatIcon mr={2} />
           Chat App
         </Text>
@@ -121,7 +123,7 @@ export default function SideDrawer() {
               <MenuDivider />
               <MenuItem
                 onClick={() => {
-                  localStorage.setItem("userInfo", JSON.stringify(null));
+                  localStorage.removeItem("userInfo");
                   navigate("/");
                   toast({
                     title: "Tchau, até mais...",

@@ -5,7 +5,7 @@ import { api } from "../API/API.js";
 import { getSender } from "../../src/NameChat.js";
 
 export default function MyChats({ fetchAgain }) {
-  const { setSelectedChat, chats, setChats } = ChatState();
+  const { selectedChat, setSelectedChat, chats, setChats } = ChatState();
   const [lodUser, setLogUser] = useState();
 
   async function fetchChats(req, res) {
@@ -24,7 +24,7 @@ export default function MyChats({ fetchAgain }) {
 
   return (
     <Box
-      display={{ md: "flex" }}
+      display={{ base: selectedChat ? "none" : "flex", md: "flex" }}
       flexDir="column"
       alignItems="center"
       p={3}
