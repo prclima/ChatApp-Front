@@ -16,7 +16,7 @@ import { Tooltip, Text, Input } from "@chakra-ui/react";
 import { Button, Box, Avatar, AvatarBadge } from "@chakra-ui/react";
 import { ChatIcon } from "@chakra-ui/icons";
 import { useState } from "react";
-import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { SearchIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { ChatState } from "../Context/ChatProvider";
 import Perfil from "../Layout/Perfil";
 import { useNavigate } from "react-router-dom";
@@ -58,7 +58,7 @@ export default function SideDrawer() {
     try {
       const { data } = await api.post(`api/chat`, { userId });
 
-      if (!chats.find((item) => item._id === data._id))
+      if (chats.find((item) => item._id === data._id))
         setChats([data, ...chats]);
 
       setSelectedChat(data);
@@ -80,9 +80,9 @@ export default function SideDrawer() {
         // borderWidth="5px"
       >
         <Tooltip label="Procurar usuário" hasArrow placement="bottom-end">
-          <Button variant="ghost" onClick={onOpen}>
+          <Button variant="ghost" onClick={onOpen} leftIcon={<SearchIcon />}>
             <Text d={{ base: "none", md: "flex" }} p="2px">
-              Procurar Usuários
+              Procurar usuários
             </Text>
           </Button>
         </Tooltip>
@@ -92,7 +92,6 @@ export default function SideDrawer() {
           Chat App
         </Text>
         <div>
-          <Menu></Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
               <Avatar size="sm" cursor="pointer">

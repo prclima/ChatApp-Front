@@ -1,4 +1,5 @@
 import { Box, Container, Text } from "@chakra-ui/react";
+import { ChatIcon } from "@chakra-ui/icons";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { Login } from "../Components/Autenticacao/Login";
 import { Signup } from "../Components/Autenticacao/Signup";
@@ -21,19 +22,18 @@ export function Homepage() {
         d="flex"
         justifyContent="center"
         p={3}
-        bg={"white"}
         w="100%"
+        bg="white"
         m="4px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
       >
         <Text md={50} fontSize="4xl" align="center">
-          {" "}
-          Chat App
+          <ChatIcon color="#ED8936" /> {""} Chat App
         </Text>
       </Box>
-      <Box bg="white" w="100%" borderRadius="lg" borderWidth="1px">
-        <Tabs variant="enclosed">
+      <Box w="100%" borderRadius="lg" borderWidth="1px" bg="white">
+        <Tabs variant="soft-rounded">
           <TabList>
             <Tab width="50%">Login</Tab>
             <Tab width="50%">Sign Up</Tab>

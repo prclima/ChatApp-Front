@@ -124,7 +124,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
             <FormControl onKeyDown={sendMessage}>
               <Input
                 variant="filled"
-                placeholder="Digite algo..."
+                placeholder="Digite sua mensagem..."
                 onChange={typingHandler}
                 value={newMessage}
               />

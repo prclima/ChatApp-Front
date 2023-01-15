@@ -8,11 +8,8 @@ import {
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export function Signup() {
-  const navigate = useNavigate();
-  // "https://quiet-star-3608.fly.dev/api/user",
   const toast = useToast();
   const [form, setForm] = useState({
     name: "",
@@ -33,7 +30,7 @@ export function Signup() {
       );
 
       toast({
-        title: "Cadastro Realizado! Clique na aba Login e comece a conversar!",
+        title: "Cadastro Realizado!",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -41,7 +38,6 @@ export function Signup() {
       });
       localStorage.setItem("userInfo", JSON.stringify(dados));
       console.log(dados);
-      navigate("/");
     } catch (err) {
       toast({
         title: "Todos os campos precisam ser preenchidos",

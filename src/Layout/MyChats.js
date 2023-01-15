@@ -6,7 +6,7 @@ import { getSender } from "../../src/NameChat.js";
 
 export default function MyChats({ fetchAgain }) {
   const { selectedChat, setSelectedChat, chats, setChats } = ChatState();
-  const [lodUser, setLogUser] = useState();
+  const [logUser, setLogUser] = useState();
 
   async function fetchChats(req, res) {
     try {
@@ -17,8 +17,9 @@ export default function MyChats({ fetchAgain }) {
       console.log(err);
     }
   }
+
   useEffect(() => {
-    setLogUser(JSON.parse(localStorage.getItem("userInfo")));
+    setLogUser(localStorage.getItem("userInfo"));
     fetchChats();
   }, [fetchAgain]);
 
@@ -43,7 +44,7 @@ export default function MyChats({ fetchAgain }) {
         justifyContent="space-between"
         alignItems="center"
       >
-        Minhas Conversas
+        Conversas
       </Box>
       <Box
         display="flex"
@@ -75,7 +76,7 @@ export default function MyChats({ fetchAgain }) {
               borderRadius="lg"
               key={chat._id}
             >
-              <Text>{getSender(lodUser, chat.users)}</Text>
+              <Text>{getSender({ logUser: logUser, users: chat.users })}</Text>
             </Box>
           );
         })}
