@@ -1,11 +1,7 @@
-export const getSender = ({ logUser, users }) => {
+export const getSender = (logUser, users) => {
   const userLog = JSON.parse(localStorage.getItem("userInfo"));
 
-  if (userLog.data._id === users[0]._id) {
-    return users[1].name;
-  } else {
-    return users[0].name;
-  }
+  return users[0]._id === userLog.data._id ? users[1].name : users[0].name;
 };
 
 export const sameSender = (messages, m, i, userId) => {

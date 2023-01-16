@@ -6,6 +6,7 @@ import { ChatState } from "../../Context/ChatProvider";
 import { api } from "../../API/API.js";
 import Scroll from "../Scroll";
 import { io } from "socket.io-client";
+import style from "./styles.css";
 
 const ENDPOINT = "quiet-star-3608.fly.dev";
 let socket, selectedChatComp;
@@ -68,6 +69,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
           content: newMessage,
           chatId: selectedChat._id,
         });
+
         setMessages([...messages, data]);
 
         //socket.io - send
@@ -96,11 +98,15 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
             alignItems="center"
             w="100%"
           >
-            {selectedChat && user
-              ? user.data._id === selectedChat.users[0]._id
-                ? selectedChat.users[1].name
-                : selectedChat.users[0].name
-              : "Selecione uma Conversa"}
+            {selectedChat && user ? (
+              user.data._id === selectedChat.users[0]._id ? (
+                <p> {selectedChat.users[1].name}</p>
+              ) : (
+                <p> {selectedChat.users[0].name}</p>
+              )
+            ) : (
+              "Selecione uma Conversa"
+            )}
             <IconButton
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
@@ -111,12 +117,13 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
             display="flex"
             flexDir="column"
             justifyContent="flex-end"
+            position="relative"
             p={3}
             bg="#E8E8E8"
             w="100%"
-            h="100%"
+            h="90%"
             borderRadius="lg"
-            overflowY="hidden"
+            // overflowY="hidden"
           >
             <div className="messages">
               <Scroll messages={messages} />

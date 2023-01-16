@@ -1,6 +1,6 @@
 import { ChatState } from "../Context/ChatProvider.js";
 import { useState, useEffect } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { api } from "../API/API.js";
 import { getSender } from "../../src/NameChat.js";
 
@@ -21,7 +21,7 @@ export default function MyChats({ fetchAgain }) {
   useEffect(() => {
     setLogUser(localStorage.getItem("userInfo"));
     fetchChats();
-  }, [fetchAgain]);
+  }, [selectedChat]);
 
   return (
     <Box
@@ -47,6 +47,7 @@ export default function MyChats({ fetchAgain }) {
         Conversas
       </Box>
       <Box
+        style={{ overflowY: "scroll" }}
         display="flex"
         flexDir="column"
         p={3}
@@ -56,30 +57,39 @@ export default function MyChats({ fetchAgain }) {
         borderRadius="lg"
         overflowY="hidden"
       >
-        {chats.map((chat) => {
-          return (
-            <Box
-              onClick={() => setSelectedChat(chat)}
-              cursor="pointer"
-              bg="#E8E8E8"
-              display="flex"
-              ustifyContent="space-between"
-              alignItems="center"
-              _hover={{
-                background: "#FF8261",
-                color: "black",
-              }}
-              color={"black"}
-              m={1}
-              px={2}
-              py={2}
-              borderRadius="lg"
-              key={chat._id}
-            >
-              <Text>{getSender({ logUser: logUser, users: chat.users })}</Text>
-            </Box>
-          );
-        })}
+        <>
+          {chats ? (
+            chats.map((chat) => {
+              return (
+                <Box
+                  onClick={() => {
+                    setSelectedChat(chat);
+                    fetchChats();
+                  }}
+                  cursor="pointer"
+                  bg="#E8E8E8"
+                  display="flex"
+                  ustifyContent="space-between"
+                  alignItems="center"
+                  _hover={{
+                    background: "#FF8261",
+                    color: "black",
+                  }}
+                  color={"black"}
+                  m={1}
+                  px={2}
+                  py={2}
+                  borderRadius="lg"
+                  key={chat._id}
+                >
+                  {getSender(logUser, chat.users)}
+                </Box>
+              );
+            })
+          ) : (
+            <text> Loading </text>
+          )}
+        </>
       </Box>
     </Box>
   );

@@ -17,7 +17,11 @@ export default function ChatBox({ fetchAgain, setFetchAgain }) {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+        <SingleChat
+          style={{ overflowY: "scroll" }}
+          fetchAgain={fetchAgain}
+          setFetchAgain={setFetchAgain}
+        />
       </Box>
     </>
   );

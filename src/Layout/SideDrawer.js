@@ -77,7 +77,6 @@ export default function SideDrawer() {
         w="100%"
         bg="white"
         p="5px 10px 5px 10px"
-        // borderWidth="5px"
       >
         <Tooltip label="Procurar usuário" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen} leftIcon={<SearchIcon />}>
